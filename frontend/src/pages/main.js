@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css'
-import Popup from '../components/popup';
+import Popup from '../../components/popup';
 
 import { useSearchParams } from 'next/navigation'
 
