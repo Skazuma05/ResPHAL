@@ -20,3 +20,5 @@ CREATE TABLE Orders (
   FOREIGN KEY (table_id) REFERENCES Table_master(table_id),
   FOREIGN KEY (menu_id) REFERENCES Menu(menu_id)
 );
+
+insert into Table_master values(null, 'N');　5回実行->5番テーブルまで作成する
