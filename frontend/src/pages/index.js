@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css'
 import Popup from '../components/popup';
 
+
 export default function Home({ data }) {
     const [isPopupVisible, setPopupVisible] = useState(false);
 
@@ -10,16 +11,15 @@ export default function Home({ data }) {
     };
 
     return (
-        <main>
+        <main className={styles.main}>
             <h1>Data from MySQL Database</h1>
             {data.map((data, index) => (
-                        <div key={index}>
-                            <button>{data.sales_id}</button>
-                            <br></br>
-                            <span>{data.date}</span>
-                        </div>
-                    ))}
-            <button onClick={handlePopupToggle}>ポップアップ表示</button>
+                <div className={styles.block} onClick={handlePopupToggle} key={index}>
+                    <a>{data.sales_id}</a>
+                    <br></br>
+                    <a className={styles.param}>{data.date}</a>
+                </div>
+            ))}
             <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} message = "aiueo"/>
         </main>
     );
