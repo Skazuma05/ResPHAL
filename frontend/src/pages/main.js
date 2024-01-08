@@ -1,10 +1,10 @@
+//　各テーブルごとのmain画面
+
 import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css'
 import Popup from '../components/popup';
 
 import { useSearchParams } from 'next/navigation'
-
-
 
 export default function Main({ data }) {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -18,30 +18,34 @@ export default function Main({ data }) {
     const param = searchParams.get('table')
 
     return (
+        <>
+        <header className={styles.header}>
+            <h1>メイン画面</h1>
+            <div className={styles.tid}>{param}</div>
+        </header>
         <main className={styles.main}>
-            <h1>Data from MySQL Database</h1>
             {data.map((data, index) => (
-                <div className={styles.block} onClick={handlePopupToggle} key={index}>
-                    <a>{data.sales_id}</a>
+                <div className={styles.block_meet} onClick={handlePopupToggle} key={index}>
+                    <a>{data.menu_name}</a>
                     <br></br>
-                    <a className={styles.param}>{data.date}</a>
+                    <div className={styles.price}>{data.price}円</div>
                 </div>
             ))}
-            <a>{param}</a>
-            <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} message = "aiueo"/>
+            <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} />
         </main>
+        </>
     );
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/getTableID');
-  const data = await res.json();
+    const res = await fetch('http://localhost:3000/api/getMeetData');
+    const data = await res.json();
 
-  return {
+    return {
     props: {
-      data,
+        data,
     },
-  };
+    };
 }
 
 
