@@ -1,5 +1,8 @@
 alter user kazuma@localhost identified by 'password';
+//全員kazumaでお願い(ソースコードに依存する関係上)
 grant all on *.* to kazuma@localhost;
+
+//mysqlのパスワード系で躓いたら共有資料をあさってくれ
 
 create database ResPHAL;
 use ResPHAL;
