@@ -1,13 +1,13 @@
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: 'localhost',
   user: 'kazuma',
   password: 'password',
   database: 'ResPHAL',
 });
 
-db.connect((err) => {
+db.getConnection((err) => {
   if (err) {
     console.error('Database connection failed: ' + err.stack);
     return;
