@@ -24,7 +24,7 @@ export default function Main({ data }) {
             <div className={styles.tid}>{param}</div>
         </header>
         <main className={styles.main}>
-            {data.map((data, index) => (
+            {Object.values(data).map((data, index) => (
                 <div className={styles.block_meet} onClick={handlePopupToggle} key={index}>
                     <a>{data.menu_name}</a>
                     <br></br>

@@ -12,7 +12,7 @@ export default function Home({ data }) {
         <Head><title>main</title></Head>
         <header className={styles.header}><h1>メイン画面</h1></header>
         <main className={styles.main}>
-            {data.map((data, index) => (
+            {Object.values(data).map((data, index) => (
                 <div key={index}>
                     <Link href={{ pathname: '/main', query: { table: data.table_id } }} passHref>
                         <button>{data.table_id}</button>
