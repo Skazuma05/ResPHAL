@@ -1,4 +1,4 @@
-alter user kazuma@localhost identified by 'password';
+alter user kazuma@localhost identified WITH mysql_native_password by 'password';
 //全員kazumaでお願い(ソースコードに依存する関係上)
 grant all on *.* to kazuma@localhost;
 

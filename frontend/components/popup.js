@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import css from '@/styles/Home.module.css';
 
 const PopupContainer = styled.div`
   position: fixed;
@@ -16,14 +17,24 @@ const PopupContainer = styled.div`
   z-index: 1000;
 `;
 
-const Popup = ({ isVisible, onClose, name}) => {
+const Popup = ({ isVisible, onClose, menu_name, menu_id}) => {
     return (
         <>
         {isVisible && (
             <PopupContainer>
+            <h2>{menu_name}</h2>
+            <p>個数を選択してください</p>
+            <p>(最大数:3人前)</p>
+            <select id="NUM" name="selectnum">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>人前
+            <button className={css.oderDecision}>注文</button>
+            <br></br>
             <p></p>
-            <p></p>
-            <button onClick={onClose}>キャンセル</button>
+            <button className={css.oderCancel}onClick={onClose}>キャンセル</button>
+
             </PopupContainer>
         )}
         </>
