@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from '@/styles/Home.module.css';
+import css from '@/styles/Home.module.css';
 import Popup from '../../components/popup';
 
 import { useSearchParams } from 'next/navigation'
@@ -25,16 +25,16 @@ export default function Main({ data }) {
 
     return (
         <>
-        <header className={styles.header}>
+        <header className={css.header}>
             <h1>メイン画面</h1>
-            <div className={styles.tid}>{param}</div>
+            <div className={css.tid}>{param}</div>
         </header>
-        <main className={styles.main}>
+        <main className={css.main}>
             {Object.values(data).map((data, index) => (
-                <div className={styles.block_meet} onClick={() => handlePopupToggle(data.menu_name, data.menu_id)} key={index}>
+                <div className={css.block_meet} onClick={() => handlePopupToggle(data.menu_name, data.menu_id)} key={index}>
                     <a>{data.menu_name}</a>
                     <br></br>
-                    <div className={styles.price}>{data.price}円</div>
+                    <div className={css.price}>{data.price}円</div>
                 </div>
             ))}
             <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} menu_name={selectedMenuName} menu_id={selectedMenuID} />

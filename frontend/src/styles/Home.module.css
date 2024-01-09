@@ -271,7 +271,7 @@
 .oderDecision{
   float:right;
   background-color: rgb(237, 33, 33);
-  border: none;
+  border: rgb(237, 33, 33);
   font-size: 20px;
   color: aliceblue;
 }

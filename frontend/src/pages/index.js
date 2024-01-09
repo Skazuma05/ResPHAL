@@ -3,15 +3,15 @@
 
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css'
+import css from '@/styles/Home.module.css'
 import Link from 'next/link'
 
 export default function Home({ data }) {
     return (
         <>
         <Head><title>main</title></Head>
-        <header className={styles.header}><h1>メイン画面</h1></header>
-        <main className={styles.main}>
+        <header className={css.header}><h1>メイン画面</h1></header>
+        <main className={css.main}>
             {Object.values(data).map((data, index) => (
                 <div key={index}>
                     <Link href={{ pathname: '/main', query: { table: data.table_id } }} passHref>
