@@ -10,14 +10,14 @@ export default async function handler(req, res) {
   try {
     const { table_id, menu_id, num } = req.body;
 
-    if (!table_id || !menu_id || num) {
-      res.status(400).json({ error: 'table_id or menu_id or num are required fields' });
+    if (!table_id || !menu_id || !num) {
+      res.status(400).json({ error: 'table_id, menu_id, and num are required fields' });
       return;
     }
 
     // パラメータ化されたクエリ
-    const query = 'INSERT INTO your_table_name (order_id, table_id, menu_id, number_of_pieces) VALUES (?, ?, ?, ?)';
-    const values = ['NULL', table_id, menu_id, num];
+    const query = 'INSERT INTO Orders (order_id, table_id, menu_id, number_of_pieces) VALUES (?, ?, ?, ?)';
+    const values = [null, table_id, menu_id, num];
 
     // データベースへの挿入
     await new Promise((resolve, reject) => {
