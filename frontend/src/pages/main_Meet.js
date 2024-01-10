@@ -32,9 +32,8 @@ export default function Main({ data }) {
         <header className={css.header}>
             <h1>お肉メニュー</h1>
             <Link href={{ pathname: '/main_Drink', query: { table: param } }} passHref>
-                <button className=''>ドリンクメニューへ</button>
+                <button className={css.menuchange}>ドリンクメニューへ</button>
             </Link>
-            <div className={css.tid}>{param}</div>
         </header>
         <main className={css.main}>
             {Object.values(data).map((data, index) => (

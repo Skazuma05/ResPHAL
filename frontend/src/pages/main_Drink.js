@@ -8,8 +8,6 @@ import Link from 'next/link'
 
 import { useSearchParams } from 'next/navigation'
 
-let flag = 0;
-
 export default function Main({ data }) {
     const router = useRouter();
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -31,7 +29,7 @@ export default function Main({ data }) {
         <header className={css.header}>
             <h1>ドリンクメニュー</h1>
             <Link href={{ pathname: '/main_Meet', query: { table: param } }} passHref>
-                <button>お肉メニューへ</button>
+                <button className={css.menuchange}>お肉メニューへ</button>
             </Link>
         </header>
         <main className={css.main}>
