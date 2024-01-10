@@ -14,7 +14,7 @@ export default function Home({ data }) {
         <main className={css.main}>
             {Object.values(data).map((data, index) => (
                 <div key={index}>
-                    <Link href={{ pathname: '/main', query: { table: data.table_id } }} passHref>
+                    <Link href={{ pathname: '/main_Meet', query: { table: data.table_id } }} passHref>
                         <button>{data.table_id}</button>
                     </Link>
                 </div>

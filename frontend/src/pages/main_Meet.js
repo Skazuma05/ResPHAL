@@ -3,9 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
+import Link from 'next/link'
+
 import Popup from '../../components/popup';
 
 import { useSearchParams } from 'next/navigation'
+
+let flag = 0;
 
 export default function Main({ data }) {
     const router = useRouter();
@@ -26,7 +30,10 @@ export default function Main({ data }) {
     return (
         <>
         <header className={css.header}>
-            <h1>メイン画面</h1>
+            <h1>お肉メニュー</h1>
+            <Link href={{ pathname: '/main_Drink', query: { table: param } }} passHref>
+                <button className=''>ドリンクメニューへ</button>
+            </Link>
             <div className={css.tid}>{param}</div>
         </header>
         <main className={css.main}>
@@ -43,14 +50,16 @@ export default function Main({ data }) {
     );
 }
 
+
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:3000/api/getMeetData');
-    const data = await res.json();
+    let res = await fetch('http://localhost:3000/api/getMeetData');
+
+    let data = await res.json();
 
     return {
-    props: {
-        data,
-    },
+        props: {
+            data,
+        },
     };
 }
 
