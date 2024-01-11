@@ -19,7 +19,7 @@ const PopupContainer = styled.div`
   z-index: 1000;
 `;
 
-const Popup = ({ isVisible, onClose, menu_name, table_id, menu_id}) => {
+const Popup = ({ isVisible, onClose, menu_name, table_id, price}) => {
     const router = useRouter()
 
     let [selectedValue, setSelectedValue] = useState('1');
@@ -37,8 +37,9 @@ const Popup = ({ isVisible, onClose, menu_name, table_id, menu_id}) => {
               },
               body: JSON.stringify({
                 table_id: table_id,  // 送信するデータの具体的な値
-                menu_id: menu_id,
+                menu_name: menu_name,
                 num: selectedValue,
+                price: price,
               }),
             });
         
@@ -73,7 +74,7 @@ const Popup = ({ isVisible, onClose, menu_name, table_id, menu_id}) => {
                 <option value="2">2</option>
                 <option value="3">3</option>
             </select>人前
-            <button className={css.oderDecision} onClick={() => sendOrderData(table_id, menu_id, selectedValue)}>注文</button>
+            <button className={css.oderDecision} onClick={() => sendOrderData(table_id, menu_name, selectedValue)}>注文</button>
             <br></br>
             <p></p>
             <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>

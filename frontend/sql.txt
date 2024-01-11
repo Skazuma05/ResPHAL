@@ -11,21 +11,20 @@ use ResPHAL;
 
 create table Sales(sales_id int not null auto_increment primary key, date date not null, sales_sum int not null);
 
-create table Table_master(table_id int not null auto_increment primary key, accounting_YN char(1));
+create table Table_master(table_id int not null auto_increment primary key, accounting_flag int(1) not null);
 
 create table Menu(menu_id int not null primary key, menu_name varchar(256) not null, price int not null);
 
 CREATE TABLE Orders (
-  order_id INT NOT NULL PRIMARY KEY,
+  order_id INT NOT NULL PRIMARY KEY auto_increment,
   table_id INT NOT NULL,
-  menu_id INT NOT NULL,
+  menu_name varchar(256) NOT NULL,
   number_of_pieces INT NOT NULL,
-  time TIME,
-  FOREIGN KEY (table_id) REFERENCES Table_master(table_id),
-  FOREIGN KEY (menu_id) REFERENCES Menu(menu_id)
+  price int not null,
+  FOREIGN KEY (table_id) REFERENCES Table_master(table_id)
 );
 
-insert into Table_master values(null, 'N');　5回実行->5番テーブルまで作成する
+insert into Table_master values(null, 0);　5回実行->5番テーブルまで作成する
 
 //メニューデータ
 insert into Menu values (1, "サーロインステーキ", 3850), (2, "特上ロース", 1980), (3, "ロース", 1210), (4, "上カルビ", 1430), (5, "ハラミ", 1045), (6, "上タン", 1210), (7, "塩タン", 1045), (8, "ホルモン", 715), (9, "レバー", 650), (10, "センマイ", 715), (11, "豚肩ロース", 880), (12, "トントロ", 715), (13, "とりもも", 660), (14, "砂ずり", 550), (15, "せせり", 605);

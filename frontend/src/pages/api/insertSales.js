@@ -8,26 +8,38 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { table_id, menu_name, num, price } = req.body;
+    const { table_id, sales_sum } = req.body;
 
-    if (!table_id || !menu_name || !num || !price) {
-      res.status(400).json({ error: 'table_id, menu_id, and num are required fields' });
+    if (!table_id || !sales_sum) {
+      res.status(400).json({ error: 'table_id, sales_sum are required fields' });
       return;
     }
 
     // パラメータ化されたクエリ
-    const query = 'INSERT INTO Orders (order_id, table_id, menu_name, number_of_pieces, price) VALUES (?, ?, ?, ?, ?)';
-    const values = [null, table_id, menu_name, num, price];
+    const query1 = 'INSERT INTO Sales (sales_id, date, sales_sum) VALUES (?, now(), ?)';
+    const values1 = [null, sales_sum];
+
+    const query2 = 'UPDATE Table_master SET accounting_flag = 1 WHERE table_id = ?';
+    const values2 = [table_id];
 
     // データベースへの挿入
     await new Promise((resolve, reject) => {
-      db.query(query, values, (error, results, fields) => {
+      db.query(query1, values1, (error, results, fields) => {
         if (error) {
           console.error(error);
           reject('Internal Server Error');
         } else {
           resolve();
         }
+      });
+
+      db.query(query2, values2, (error, result, fields) => {
+        if (error) {
+            console.error(error);
+            reject('Internal Server Error');
+          } else {
+            resolve();
+          }
       });
     });
 

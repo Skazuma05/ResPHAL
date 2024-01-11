@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
 import Link from 'next/link'
 
-import Popup from '../../components/popup';
+import Popup from '../../components/Order_popup';
 
 import { useSearchParams } from 'next/navigation'
 
@@ -13,12 +13,12 @@ export default function Main({ data }) {
     const router = useRouter();
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [selectedMenuName, setSelectedMenuName] = useState('');
-    const [selectedMenuID, setSelectedMenuID] = useState();
+    const [selectedMenuPrice, setselectedMenuPrice] = useState();
 
-    const handlePopupToggle = (menu_name, menu_id) => {
-      setPopupVisible(!isPopupVisible);
-      setSelectedMenuName(menu_name);
-      setSelectedMenuID(menu_id);
+    const handlePopupToggle = (menu_name, price) => {
+        setPopupVisible(!isPopupVisible);
+        setSelectedMenuName(menu_name);
+        setselectedMenuPrice(price)
     };
 
     // urlパラメータの取得
@@ -35,13 +35,13 @@ export default function Main({ data }) {
         </header>
         <main className={css.main}>
             {Object.values(data).map((data, index) => (
-                <div className={css.block} onClick={() => handlePopupToggle(data.menu_name, data.menu_id)} key={index}>
+                <div className={css.block} onClick={() => handlePopupToggle(data.menu_name, data.price)} key={index}>
                     <a>{data.menu_name}</a>
                     <br></br>
                     <div className={css.price}>{data.price}円</div>
                 </div>
             ))}
-            <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} menu_name={selectedMenuName} table_id={param} menu_id={selectedMenuID} />
+            <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} menu_name={selectedMenuName} table_id={param} price={selectedMenuPrice} />
         </main>
         </>
     );
