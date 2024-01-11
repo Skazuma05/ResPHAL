@@ -21,6 +21,7 @@ CREATE TABLE Orders (
   menu_name varchar(256) NOT NULL,
   number_of_pieces INT NOT NULL,
   price int not null,
+  provide_flag int(1) not null,
   FOREIGN KEY (table_id) REFERENCES Table_master(table_id)
 );
 

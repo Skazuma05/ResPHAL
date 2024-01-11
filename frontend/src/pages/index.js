@@ -19,6 +19,10 @@ export default function Home({ data }) {
                     </Link>
                 </div>
             ))}
+        <Link href={{ pathname: '/main_Staff'}} passHref>
+            <button>スタッフ</button>
+        </Link>
+        
         </main>
         </>
         
