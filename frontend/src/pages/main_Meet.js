@@ -12,12 +12,12 @@ import { useSearchParams } from 'next/navigation'
 export default function Main({ data }) {
     const router = useRouter();
     const [isPopupVisible, setPopupVisible] = useState(false);
-    const [selectedMenuName, setSelectedMenuName] = useState('');
+    const [selectedMenuName, setselectedMenuName] = useState('');
     const [selectedMenuPrice, setselectedMenuPrice] = useState();
 
     const handlePopupToggle = (menu_name, price) => {
         setPopupVisible(!isPopupVisible);
-        setSelectedMenuName(menu_name);
+        setselectedMenuName(menu_name);
         setselectedMenuPrice(price)
     };
 
@@ -29,7 +29,7 @@ export default function Main({ data }) {
         <>
         <header className={css.header}>
             <h1>お肉メニュー</h1>
-            <Link href={{ pathname: '/main_Meet', query: { table: param } }} passHref><button className={css.menubar_left}>お肉メニュー</button></Link>
+            <Link href={{ pathname: '/main_Meet', query: { table: param } }}><button className={css.menubar_left}>お肉メニュー</button></Link>
             <Link href={{ pathname: '/main_Drink', query: { table: param } }}><button className={css.menubar_left}>ドリンクメニュー</button></Link>
             <Link href={{ pathname: '/history', query: { table: param } }}><button className={css.menubar_right}>注文履歴</button></Link>
         </header>
@@ -51,7 +51,6 @@ export default function Main({ data }) {
 export async function getStaticProps() {
     let res = await fetch('http://localhost:3000/api/getMeetData');
     let data = await res.json();
-
     return {
         props: {
             data,

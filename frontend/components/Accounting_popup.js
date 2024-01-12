@@ -11,18 +11,19 @@ const PopupContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 30px;
+  padding: 10px;
+  width: 300px; 
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 `;
 
-const Popup = ({ isVisible, onClose, table_id, total }) => {
+const Popup = ({ isVisible, onClose, table_id, sales_sum}) => {
     const router = useRouter()
 
-    const sendHistoryData = async () => {
-        const apiUrl = '/api/insertTableData';  // APIエンドポイントのURL
+    const setFlagData = async () => {
+        const apiUrl = '/api/initFlagAndinsertSales';  // APIエンドポイントのURL
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -31,7 +32,7 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
                 },
                 body: JSON.stringify({
                     table_id: table_id,  // 送信するデータの具体的な値
-                    sales_sum: total,
+                    sales_sum: sales_sum,
                 }),
             });
         
@@ -45,11 +46,8 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
             console.error('Error:', error);
         }
 
+        alert("提供しました。");
         router.reload();
-        
-        alert("お会計を受け付けました。");
-
-        location.href = '/end';
     }
 
     const handlecancel = () => {
@@ -60,9 +58,10 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
         <>
         {isVisible && (
             <PopupContainer>
-            <h3>お会計に進みますか？</h3>
-            <button className={css.oderDecision} onClick={() => sendHistoryData()}>進む</button>
-            <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>
+            <h3>{table_id}卓　　　　　　{sales_sum}円</h3>
+            <h4>会計完了しましたか？</h4>
+            <button className={css.oderDecision} onClick={setFlagData}>はい</button>
+            <button className={css.oderCancel} onClick={handlecancel}>いいえ</button>
             </PopupContainer>
         )}
         </>

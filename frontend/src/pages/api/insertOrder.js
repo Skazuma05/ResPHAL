@@ -21,14 +21,14 @@ export default async function handler(req, res) {
 
         // データベースへの挿入
         await new Promise((resolve, reject) => {
-        db.query(query, values, (error, results, fields) => {
-            if (error) {
-            console.error(error);
-            reject('Internal Server Error');
-            } else {
-            resolve();
-            }
-        });
+            db.query(query, values, (error, results, fields) => {
+                if (error) {
+                console.error(error);
+                reject('Internal Server Error');
+                } else {
+                resolve();
+                }
+            });
         });
 
         res.status(201).json({ message: 'Data inserted successfully' });

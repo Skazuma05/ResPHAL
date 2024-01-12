@@ -13,6 +13,7 @@ const PopupContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
+  width: 300px; 
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -31,27 +32,27 @@ const Popup = ({ isVisible, onClose, menu_name, table_id, price}) => {
         const apiUrl = '/api/insertOrder';  // APIエンドポイントのURL
         try {
             const response = await fetch(apiUrl, {
-              method: 'POST',
-              headers: {
+                method: 'POST',
+                headers: {
                 'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
+                },
+                body: JSON.stringify({
                 table_id: table_id,  // 送信するデータの具体的な値
                 menu_name: menu_name,
                 num: selectedValue,
                 price: price,
-              }),
+                }),
             });
         
             if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
         
             const data = await response.json();
             console.log(data);  // サーバーからのレスポンスをログに表示
-          } catch (error) {
+        } catch (error) {
             console.error('Error:', error);
-          }
+        }
 
         router.reload();
         
@@ -68,17 +69,17 @@ const Popup = ({ isVisible, onClose, menu_name, table_id, price}) => {
             <PopupContainer>
             <h2>{menu_name}</h2>
             <p>個数を選択してください</p>
-            <p>(最大数:3人前)</p>
-            <select id="NUM" name="selectnum" onChange={handleSelectChange}>
+            <p>(最大数:4人前)</p>
+            <select id="NUM" name="selectnum" className={css.select} onChange={handleSelectChange}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
             </select>人前
             <button className={css.oderDecision} onClick={() => sendOrderData(table_id, menu_name, selectedValue)}>注文</button>
             <br></br>
             <p></p>
             <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>
-            <p>{selectedValue}</p>
             </PopupContainer>
         )}
         </>

@@ -1,4 +1,4 @@
-export default function() {
+export default function END() {
     return(
         <h1>
             レジにてお会計をお願いいたします。

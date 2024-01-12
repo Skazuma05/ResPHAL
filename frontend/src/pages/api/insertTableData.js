@@ -8,27 +8,26 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { order_id } = req.body;
+        const { table_id, sales_sum } = req.body;
 
-        if (!order_id) {
-        res.status(400).json({ error: 'order_id is required fields' });
-        return;
+        if (!table_id || !sales_sum) {
+            res.status(400).json({ error: 'table_id, sales_sum are required fields' });
+            return;
         }
 
         // パラメータ化されたクエリ
-        const query = 'update Orders set provide_flag = 1 where order_id = ?;';
-        const values = [order_id];
+        const query = 'UPDATE Table_master SET accounting_flag = 1, sales_sum = ? WHERE table_id = ?';
+        const values = [sales_sum, table_id];
 
         // データベースへの挿入
         await new Promise((resolve, reject) => {
-            db.query(query, values, (error, results, fields) => {
+            db.query(query, values, (error, result, fields) => {
                 if (error) {
                     console.error(error);
                     reject('Internal Server Error');
                 } else {
                     resolve();
                 }
-                console.log(values)
             });
         });
 

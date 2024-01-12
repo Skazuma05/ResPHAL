@@ -11,19 +11,18 @@ const PopupContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 30px;
+  padding: 10px;
+  width: 300px; 
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 `;
 
-const Popup = ({ isVisible, onClose, table_id, total }) => {
+const Popup = ({ isVisible, onClose, order_id, menu_name}) => {
     const router = useRouter()
 
-    let [selectedValue, setSelectedValue] = useState('1');
-
-    const sendHistoryData = async () => {
+    const setFlagData = async () => {
         const apiUrl = '/api/changeFlag';  // APIエンドポイントのURL
         try {
             const response = await fetch(apiUrl, {
@@ -32,8 +31,7 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                table_id: table_id,  // 送信するデータの具体的な値
-                sales_sum: total,
+                order_id: order_id,  // 送信するデータの具体的な値
               }),
             });
         
@@ -43,15 +41,12 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
         
             const data = await response.json();
             console.log(data);  // サーバーからのレスポンスをログに表示
-          } catch (error) {
-            console.error('Error:', error);
-          }
+        } catch (error) {
+        console.error('Error:', error);
+        }
 
-        router.reload();
-        
         alert("提供しました。");
-
-        location.href = '/end';
+        router.reload();
     }
 
     const handlecancel = () => {
@@ -62,9 +57,10 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
         <>
         {isVisible && (
             <PopupContainer>
-            <h3>お会計に進みますか？</h3>
-            <button className={css.oderDecision} onClick={() => sendHistoryData()}>進む</button>
-            <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>
+            <h3>{menu_name}</h3>
+            <h4>提供しますか？</h4>
+            <button className={css.oderDecision} onClick={setFlagData}>はい</button>
+            <button className={css.oderCancel} onClick={handlecancel}>いいえ</button>
             </PopupContainer>
         )}
         </>

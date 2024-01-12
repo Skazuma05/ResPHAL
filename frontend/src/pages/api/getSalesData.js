@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { order_id } = req.body;
+        const { table_id } = req.body;
 
         if (!order_id) {
         res.status(400).json({ error: 'order_id is required fields' });
@@ -16,8 +16,8 @@ export default async function handler(req, res) {
         }
 
         // パラメータ化されたクエリ
-        const query = 'update Orders set provide_flag = 1 where order_id = ?;';
-        const values = [order_id];
+        const query = 'SELECT sales_sum FROM Sales WHERE table_id = ?';
+        const values = [table_id];
 
         // データベースへの挿入
         await new Promise((resolve, reject) => {
@@ -29,6 +29,7 @@ export default async function handler(req, res) {
                     resolve();
                 }
                 console.log(values)
+                res.status(200).json(results);
             });
         });
 
