@@ -46,7 +46,7 @@ const Popup = ({ isVisible, onClose, table_id, sales_sum}) => {
             console.error('Error:', error);
         }
 
-        alert("提供しました。");
+        alert("会計完了しました。");
         router.reload();
     }
 
