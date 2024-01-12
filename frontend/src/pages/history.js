@@ -39,8 +39,9 @@ export default function History() {
         console.error('データの取得エラー:', error);
       }
     };
+
     fetchData();
-  });
+  }, [param]); // paramが変更されたときだけ再取得する
 
   return (
     <>
