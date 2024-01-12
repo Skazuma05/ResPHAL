@@ -1,5 +1,4 @@
-const mysql = require('mysql');
-const { Connection } = require('promise-mysql');
+const mysql = require('mysql2');
 
 const db = mysql.createPool({
     host: 'localhost',
@@ -7,8 +6,6 @@ const db = mysql.createPool({
     password: 'password',
     database: 'ResPHAL',
 });
-
-const connection = db.getConnection();
 
 db.getConnection((err) => {
     if (err) {
