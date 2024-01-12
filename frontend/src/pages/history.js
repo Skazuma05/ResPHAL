@@ -23,7 +23,7 @@ export default function History() {
     // クライアントサイドでのデータ取得
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/getHistory?table_id=` + param);
+        const response = await fetch(`/api/getHistory?table_id=` + param);
         const newData = await response.json();
 
         // 取得したデータをstateにセット
