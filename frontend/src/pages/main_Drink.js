@@ -49,7 +49,7 @@ export default function Main({ data }) {
 
 
 export async function getStaticProps() {
-    let res = await fetch('http://localhost:3000/api/getDrinkData');
+    let res = await fetch(process.env.URL +'/api/getDrinkData');
 
     let data = await res.json();
 

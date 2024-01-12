@@ -6,6 +6,8 @@ import Head from 'next/head';
 import css from '@/styles/Home.module.css'
 import Link from 'next/link'
 
+require('dotenv').config();
+
 export default function Home({ data }) {
     return (
         <>
@@ -30,7 +32,7 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/getTableID');
+  const res = await fetch(process.env.URL +'/api/getTableID');
   const data = await res.json();
 
   return {

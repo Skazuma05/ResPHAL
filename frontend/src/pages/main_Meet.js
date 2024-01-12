@@ -49,7 +49,7 @@ export default function Main({ data }) {
 
 
 export async function getStaticProps() {
-    let res = await fetch('http://localhost:3000/api/getMeetData');
+    let res = await fetch(process.env.URL +'/api/getMeetData');
     let data = await res.json();
     return {
         props: {
