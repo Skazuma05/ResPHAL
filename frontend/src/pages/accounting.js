@@ -37,7 +37,7 @@ export default function Accounting({ data }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     let res = await fetch(process.env.URL +'/api/getAccountingFlag');
     let data = await res.json();
 

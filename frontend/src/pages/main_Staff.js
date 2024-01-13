@@ -35,7 +35,7 @@ export default function Staff( {data} ) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     let res = await fetch(process.env.URL +'/api/getOrderAllData');
     let data = await res.json();
 
