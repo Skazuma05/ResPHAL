@@ -1,0 +1,32 @@
+:root {
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    
+  }
+}
+
+* {
+  
+}
+
+html,
+body {
+  background-image: url('/backgroundimage.jpg');
+}
+
+body {
+ 
+}
+
+a {
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    
+  }
+}

@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
 
 import Popup from '../../components/Order_popup';
 
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
 export default function Main({ data }) {
     const router = useRouter();
@@ -27,6 +28,7 @@ export default function Main({ data }) {
 
     return (
         <>
+        <body>
             <header className={css.header}>
                 <h1>ドリンクメニュー</h1>
                 <Link href={{ pathname: '/main_Meet', query: { table: param } }} passHref><button className={css.menubar_left}>お肉メニュー</button></Link>
@@ -43,6 +45,7 @@ export default function Main({ data }) {
                 ))}
                 <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} menu_name={selectedMenuName} table_id={param} price={selectedMenuPrice} />
             </main>
+        </body>
         </>
     );
 }
