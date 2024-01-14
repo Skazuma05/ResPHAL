@@ -28,7 +28,6 @@ export default function Main({ data }) {
 
     return (
         <>
-        <body>
             <header className={css.header}>
                 <h1>ドリンクメニュー</h1>
                 <Link href={{ pathname: '/main_Meet', query: { table: param } }} passHref><button className={css.menubar_left}>お肉メニュー</button></Link>
@@ -45,7 +44,6 @@ export default function Main({ data }) {
                 ))}
                 <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} menu_name={selectedMenuName} table_id={param} price={selectedMenuPrice} />
             </main>
-        </body>
         </>
     );
 }
