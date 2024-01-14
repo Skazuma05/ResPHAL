@@ -1,32 +1,13 @@
-:root {
-  
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
-}
-
-* {
-  
-}
-
 html,
 body {
   background-image: url('/backgroundimage.jpg');
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+  background-position: 0px 120px;
+  margin: 0;
 }
 
-body {
- 
-}
-
-a {
-  
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    
-  }
+h1 {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 }
