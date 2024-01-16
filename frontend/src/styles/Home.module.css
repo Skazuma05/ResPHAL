@@ -313,3 +313,18 @@
 .textcenter {
   text-align: center;
 }
+
+.text-right{
+  text-align: right;
+}
+
+.accounting{
+  background-color: red;
+  color: white;
+  border: 0;
+  font-size: 20px;
+}
+
+.total {
+  font-size: 25px;
+}

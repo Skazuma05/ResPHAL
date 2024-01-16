@@ -58,10 +58,8 @@ export default function History() {
         </Link>
       </header>
       <main className={css.main}>
-        <a>{total}円</a>{' '}
-        <button className={css.accounting} onClick={handlePopupToggle}>
-          おあいそ
-        </button>
+        <a className={css.total}>現在の合計金額:{total}円</a>
+        <button className={css.accounting} onClick={handlePopupToggle}>おあいそ</button>
         {data.map((item, index) => (
           <div className={css.block} key={index}>
             <a>{item.menu_name}</a>
