@@ -1,4 +1,3 @@
-// pages/api/insertData.js
 import db from '../../db';
 
 export default async function handler(req, res) {
@@ -8,16 +7,16 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { order_id } = req.body;
+        const { menu_id } = req.body;
 
-        if (!order_id) {
+        if (!menu_id) {
         res.status(400).json({ error: 'order_id is required fields' });
         return;
         }
 
         // パラメータ化されたクエリ
-        const query = 'update Orders set provide_flag = 1 where order_id = ?;';
-        const values = [order_id];
+        const query = 'UPDATE Menu SET so_flag = 0 where menu_id = ?;';
+        const values = [menu_id];
 
         // データベースへの挿入
         await new Promise((resolve, reject) => {

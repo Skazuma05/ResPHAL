@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
 import Link from 'next/link';
 
-import Popup from '../../components/Accounting_popup'
+import Popup from '../../../components/Accounting_popup'
 
 export default function Accounting({ data }) {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -20,9 +20,8 @@ export default function Accounting({ data }) {
     return(
         <>
         <header className={css.header}>
-            <h1>注文一覧画面</h1>
-            <Link href={{ pathname: '/main_Staff' }}><button className={css.staff_menubar}>注文一覧</button></Link>
-            <Link href={{ pathname: '/accounting' }}><button className={css.staff_menubar}>会計確認</button></Link>
+            <h1>会計管理画面</h1>
+            <Link href={{ pathname: '/staff/main_Staff' }}><button className={css.staff_menubar}>メインに戻る</button></Link>
         </header>
 
         <main className={css.main}>

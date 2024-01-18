@@ -16,12 +16,12 @@ export default function Home({ data }) {
         <main className={css.main}>
             {Object.values(data).map((data, index) => (
                 <div key={index}>
-                    <Link href={{ pathname: '/main_Meet', query: { table: data.table_id } }} passHref>
+                    <Link href={{ pathname: '/customer/meatMenuData', query: { table: data.table_id } }} passHref>
                         <button>{data.table_id}</button>
                     </Link>
                 </div>
             ))}
-        <Link href={{ pathname: '/main_Staff'}} passHref>
+        <Link href={{ pathname: '/staff/main_Staff'}} passHref>
             <button>スタッフ</button>
         </Link>
         

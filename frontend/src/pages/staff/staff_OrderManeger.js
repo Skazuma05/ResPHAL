@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
 import Link from 'next/link';
 
-import Popup from '../../components/Provide_popup';
+import Popup from '../../../components/Provide_popup';
 
 export default function Staff({ data }) {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -20,8 +20,7 @@ export default function Staff({ data }) {
             <header className={css.header}>
                 <meta http-equiv="refresh" content='10;url=./main_Staff'></meta>
                 <h1>注文一覧画面</h1>
-                <Link href={{ pathname: '/main_Staff' }}><button className={css.staff_menubar}>注文一覧</button></Link>
-                <Link href={{ pathname: '/accounting' }}><button className={css.staff_menubar}>会計確認</button></Link>
+                <Link href={{ pathname: '/staff/main_Staff' }}><button className={css.staff_menubar}>メインに戻る</button></Link>
             </header>
 
             <main className={css.main}>

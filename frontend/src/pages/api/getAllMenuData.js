@@ -1,6 +1,6 @@
 import db from '../../db';
 
-const query = 'SELECT * FROM Menu WHERE menu_id >= 100 AND so_flag = 0';
+const query = 'SELECT * FROM Menu WHERE so_flag = 0';
 
 export default async function handler(req, res) {
     db.query(query, (error, results, fields) => {

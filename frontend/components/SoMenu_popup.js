@@ -19,11 +19,11 @@ const PopupContainer = styled.div`
   z-index: 1000;
 `;
 
-const Popup = ({ isVisible, onClose, order_id, menu_name}) => {
+const Popup = ({ isVisible, onClose, menu_id, menu_name}) => {
     const router = useRouter()
 
     const setFlagData = async () => {
-        const apiUrl = '/api/changeProvideFlag';  // APIエンドポイントのURL
+        const apiUrl = '/api/changeSoFlagON';  // APIエンドポイントのURL
         try {
             const response = await fetch(apiUrl, {
               method: 'POST',
@@ -31,7 +31,7 @@ const Popup = ({ isVisible, onClose, order_id, menu_name}) => {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                order_id: order_id,  // 送信するデータの具体的な値
+                menu_id: menu_id,  // 送信するデータの具体的な値
               }),
             });
         
@@ -45,7 +45,7 @@ const Popup = ({ isVisible, onClose, order_id, menu_name}) => {
         console.error('Error:', error);
         }
 
-        alert("提供しました。");
+        alert("売り切れとして登録しました。");
         router.reload();
     }
 
@@ -58,7 +58,7 @@ const Popup = ({ isVisible, onClose, order_id, menu_name}) => {
         {isVisible && (
             <PopupContainer>
             <h3>{menu_name}</h3>
-            <h4>提供しますか？</h4>
+            <h4>売り切れとして登録しますか？</h4>
             <button className={css.oderDecision} onClick={setFlagData}>はい</button>
             <button className={css.oderCancel} onClick={handlecancel}>いいえ</button>
             </PopupContainer>

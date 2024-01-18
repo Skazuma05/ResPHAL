@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import css from '@/styles/Home.module.css';
 import Link from 'next/link';
 
-import Popup from '../../components/Order_popup';
+import Popup from '../../../components/Order_popup';
 
 import { useSearchParams } from 'next/navigation'
 
@@ -29,9 +29,9 @@ export default function Main({ data }) {
         <>
             <header className={css.header}>
                 <h1>お肉メニュー</h1>
-                <Link href={{ pathname: '/main_Meet', query: { table: param } }}><button className={css.menubar_left}>お肉メニュー</button></Link>
-                <Link href={{ pathname: '/main_Drink', query: { table: param } }}><button className={css.menubar_left}>ドリンクメニュー</button></Link>
-                <Link href={{ pathname: '/history', query: { table: param } }}><button className={css.menubar_right}>注文履歴</button></Link>
+                <Link href={{ pathname: '/customer/meatMenuData', query: { table: param } }}><button className={css.menubar_left}>お肉メニュー</button></Link>
+                <Link href={{ pathname: '/customer/drinkMenuData', query: { table: param } }}><button className={css.menubar_left}>ドリンクメニュー</button></Link>
+                <Link href={{ pathname: '/customer/history', query: { table: param } }}><button className={css.menubar_right}>注文履歴</button></Link>
             </header>
             <main className={css.main}>
                 {Object.values(data).map((data, index) => (
@@ -49,7 +49,7 @@ export default function Main({ data }) {
 
 
 export async function getServerSideProps() {
-    let res = await fetch(process.env.URL + '/api/getMeetData');
+    let res = await fetch(process.env.URL + '/api/getMeatData');
     let data = await res.json();
     return {
         props: {

@@ -281,9 +281,16 @@
   font-size: 20px;
 }
 
+.staff_main{
+  width: 400px;
+  height: 150px;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
 .staff_menubar {
   width: 50%;
-  height: 30px
+  height: 30px;
 }
 
 .menubar_left {
@@ -327,4 +334,9 @@
 
 .total {
   font-size: 25px;
+}
+
+.totalSales {
+  font-size: 40px;
+  background-color: rgb(95, 219, 190);
 }
