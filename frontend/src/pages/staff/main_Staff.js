@@ -12,6 +12,7 @@ export default function Staff() {
             </header>
             <main className={css.main}>
             <Link href={{ pathname: '/staff/staff_OrderManeger' }}><button className={css.staff_main}>注文一覧</button></Link>
+            <Link href={{ pathname: '/staff/staff_OrderCancel' }}><button className={css.staff_main}>注文削除</button></Link>
             <Link href={{ pathname: '/staff/staff_Accounting' }}><button className={css.staff_main}>会計確認</button></Link>
             <Link href={{ pathname: '/staff/staff_SoMenu' }}><button className={css.staff_main}>売り切れ管理</button></Link>
             <Link href={{ pathname: '/staff/staff_RevivalMenu' }}><button className={css.staff_main}>補充管理</button></Link>

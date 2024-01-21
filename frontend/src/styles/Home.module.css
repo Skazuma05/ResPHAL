@@ -234,8 +234,9 @@
   margin: 5px;
   padding: 10px;
   border: 2px solid black;
-  background-color: lightgray;
+  background:rgba(236, 222, 192, 0.747);
   font-size: 25px;
+  font-weight: bold;
 }
 
 .block_staff {
@@ -285,7 +286,9 @@
   width: 400px;
   height: 150px;
   font-size: 30px;
+  font-weight: bold;
   margin-bottom: 15px;
+  background:rgba(236, 222, 192, 0.747);
 }
 
 .staff_menubar {
