@@ -12,6 +12,7 @@ const PopupContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
+  width: 300px;
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
