@@ -10,12 +10,12 @@ export default async function handler(req, res) {
         const { order_id } = req.body;
 
         if (!order_id) {
-        res.status(400).json({ error: 'order_id is required fields' });
-        return;
+            res.status(400).json({ error: 'Order_id is Required Fields' });
+            return;
         }
 
         // パラメータ化されたクエリ
-        const query = 'update Orders set provide_flag = 1 where order_id = ?;';
+        const query = 'UPDATE Orders SET provide_flag = 1 WHERE order_id = ?';
         const values = [order_id];
 
         // データベースへの挿入
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
             });
         });
 
-        res.status(201).json({ message: 'Data inserted successfully' });
+        res.status(201).json({ message: 'Data Inserted Successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

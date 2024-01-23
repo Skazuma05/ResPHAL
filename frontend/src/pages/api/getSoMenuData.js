@@ -1,8 +1,8 @@
 import db from '../../db';
 
-const query = 'SELECT * FROM Menu WHERE so_flag = 1';
-
 export default async function handler(req, res) {
+    const query = 'SELECT * FROM Menu WHERE so_flag = 1';
+    
     db.query(query, (error, results, fields) => {
         if (error) {
             console.error(error);

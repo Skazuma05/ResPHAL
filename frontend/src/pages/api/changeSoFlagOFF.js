@@ -10,12 +10,12 @@ export default async function handler(req, res) {
         const { menu_id } = req.body;
 
         if (!menu_id) {
-        res.status(400).json({ error: 'order_id is required fields' });
+        res.status(400).json({ error: 'menur_id is Required Fields' });
         return;
         }
 
         // パラメータ化されたクエリ
-        const query = 'UPDATE Menu SET so_flag = 0 where menu_id = ?;';
+        const query = 'UPDATE Menu SET so_flag = 0 WHERE menu_id = ?';
         const values = [menu_id];
 
         // データベースへの挿入
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
             });
         });
 
-        res.status(201).json({ message: 'Data inserted successfully' });
+        res.status(201).json({ message: 'Data Inserted Successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

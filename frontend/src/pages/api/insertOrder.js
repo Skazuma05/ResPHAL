@@ -11,8 +11,8 @@ export default async function handler(req, res) {
         const { table_id, menu_name, num, price } = req.body;
 
         if (!table_id || !menu_name || !num || !price) {
-        res.status(400).json({ error: 'table_id, menu_id, and num are required fields' });
-        return;
+            res.status(400).json({ error: 'table_id, menu_id, num and price are Required Fields' });
+            return;
         }
 
         // パラメータ化されたクエリ
@@ -23,15 +23,15 @@ export default async function handler(req, res) {
         await new Promise((resolve, reject) => {
             db.query(query, values, (error, results, fields) => {
                 if (error) {
-                console.error(error);
-                reject('Internal Server Error');
+                    console.error(error);
+                    reject('Internal Server Error');
                 } else {
-                resolve();
+                    resolve();
                 }
             });
         });
 
-        res.status(201).json({ message: 'Data inserted successfully' });
+        res.status(201).json({ message: 'Data Inserted Successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

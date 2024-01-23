@@ -10,12 +10,12 @@ export default async function handler(req, res) {
         const { menu_id } = req.body;
 
         if (!menu_id) {
-        res.status(400).json({ error: 'order_id is required fields' });
-        return;
+            res.status(400).json({ error: 'menu_id is Required Fields' });
+            return;
         }
 
         // パラメータ化されたクエリ
-        const query = 'UPDATE Menu SET so_flag = 1 where menu_id = ?;';
+        const query = 'UPDATE Menu SET so_flag = 1 where menu_id = ?';
         const values = [menu_id];
 
         // データベースへの挿入

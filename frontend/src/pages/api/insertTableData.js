@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         const { table_id, sales_sum } = req.body;
 
         if (!table_id || !sales_sum) {
-            res.status(400).json({ error: 'table_id, sales_sum are required fields' });
+            res.status(400).json({ error: 'table_id and sales_sum are Required Fields' });
             return;
         }
 
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
             });
         });
 
-        res.status(201).json({ message: 'Data inserted successfully' });
+        res.status(201).json({ message: 'Data Inserted Successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

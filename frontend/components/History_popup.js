@@ -61,9 +61,9 @@ const Popup = ({ isVisible, onClose, table_id, total }) => {
         <>
         {isVisible && (
             <PopupContainer>
-            <h3>お会計に進みますか？</h3>
-            <button className={css.oderDecision} onClick={() => sendHistoryData()}>進む</button>
-            <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>
+                <h3>お会計に進みますか？</h3>
+                <button className={css.oderDecision} onClick={() => sendHistoryData()}>進む</button>
+                <button className={css.oderCancel} onClick={handlecancel}>キャンセル</button>
             </PopupContainer>
         )}
         </>

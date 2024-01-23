@@ -37,7 +37,7 @@ const Popup = ({ isVisible, onClose, table_id, sales_sum}) => {
             });
         
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP Error! Status: ${response.status}`);
             }
         
             const data = await response.json();

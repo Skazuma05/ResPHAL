@@ -26,23 +26,23 @@ const Popup = ({ isVisible, onClose, menu_id, menu_name}) => {
         const apiUrl = '/api/changeSoFlagOFF';  // APIエンドポイントのURL
         try {
             const response = await fetch(apiUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                menu_id: menu_id,  // 送信するデータの具体的な値
-              }),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    menu_id: menu_id,  // 送信するデータの具体的な値
+                }),
             });
         
             if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
         
             const data = await response.json();
             console.log(data);  // サーバーからのレスポンスをログに表示
         } catch (error) {
-        console.error('Error:', error);
+            console.error('Error:', error);
         }
 
         alert("補充しました。");
@@ -57,10 +57,10 @@ const Popup = ({ isVisible, onClose, menu_id, menu_name}) => {
         <>
         {isVisible && (
             <PopupContainer>
-            <h3>{menu_name}</h3>
-            <h4>補充しますか？</h4>
-            <button className={css.oderDecision} onClick={setFlagData}>はい</button>
-            <button className={css.oderCancel} onClick={handlecancel}>いいえ</button>
+                <h3>{menu_name}</h3>
+                <h4>補充しますか？</h4>
+                <button className={css.oderDecision} onClick={setFlagData}>はい</button>
+                <button className={css.oderCancel} onClick={handlecancel}>いいえ</button>
             </PopupContainer>
         )}
         </>

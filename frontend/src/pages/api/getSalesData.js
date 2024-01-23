@@ -11,8 +11,8 @@ export default async function handler(req, res) {
         const { table_id } = req.body;
 
         if (!order_id) {
-        res.status(400).json({ error: 'order_id is required fields' });
-        return;
+            res.status(400).json({ error: '_table_id is Required Fields' });
+            return;
         }
 
         // パラメータ化されたクエリ
