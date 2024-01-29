@@ -22,7 +22,7 @@ export default function History() {
   useEffect(() => {
     // クライアントサイドでのデータ取得
     const fetchData = async () => {
-      try {
+        try {
         const response = await fetch(`/api/getHistory?table_id=` + param);
         const newData = await response.json();
 
@@ -32,12 +32,12 @@ export default function History() {
         // 先に合計金額のみを計算
         let totalAmount = 0;
         newData.forEach((item) => {
-          totalAmount += item.price * item.number_of_pieces;
+            totalAmount += item.price * item.number_of_pieces;
         });
         setTotal(totalAmount);
-      } catch (error) {
+        } catch (error) {
         console.error('データの取得エラー:', error);
-      }
+        }
     };
 
     fetchData();
@@ -55,13 +55,13 @@ export default function History() {
         <a className={css.total}>現在の合計金額:{total}円</a>
         <button className={css.accounting} onClick={handlePopupToggle}>おあいそ</button>
         {data.map((item, index) => (
-          <div className={css.block} key={index}>
-            <a>{item.menu_name}</a>
-            <br></br>
-            <div className={css.price}>
-              {item.price}円 × {item.number_of_pieces}
+            <div className={css.block} key={index}>
+                <a>{item.menu_name}</a>
+                <br></br>
+                <div className={css.price}>
+                    {item.price}円 × {item.number_of_pieces}
+                </div>
             </div>
-          </div>
         ))}
         <Popup isVisible={isPopupVisible} onClose={handlePopupToggle} table_id={param} total={total} />
       </main>

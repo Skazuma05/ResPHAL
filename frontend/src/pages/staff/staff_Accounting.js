@@ -19,19 +19,19 @@ export default function Accounting({ data }) {
     };
     return(
         <>
-        <header className={css.header}>
-            <h1>会計管理画面</h1>
-            <Link href={{ pathname: '/staff/main_Staff' }}><button className={css.staff_menubar}>メインに戻る</button></Link>
-        </header>
+            <header className={css.header}>
+                <h1>会計管理画面</h1>
+                <Link href={{ pathname: '/staff/main_Staff' }}><button className={css.staff_menubar}>メインに戻る</button></Link>
+            </header>
 
-        <main className={css.main}>
-            {Object.values(data).map((data, index) => (
-                <div className={css.block_staff} onClick={() => handlePopupToggle(data.table_id, data.sales_sum)} key={index}>
-                    <div className={css.textcenter}><a>{data.table_id}卓</a></div>
-                </div>
-            ))}
-            <Popup isVisible={isPopupVisible} table_id={selectedTableID} sales_sum={salesData}/>
-        </main>
+            <main className={css.main}>
+                {Object.values(data).map((data, index) => (
+                    <div className={css.block_staff} onClick={() => handlePopupToggle(data.table_id, data.sales_sum)} key={index}>
+                        <div className={css.textcenter}><a>{data.table_id}卓</a></div>
+                    </div>
+                ))}
+                <Popup isVisible={isPopupVisible} table_id={selectedTableID} sales_sum={salesData}/>
+            </main>
         </>
     );
 }

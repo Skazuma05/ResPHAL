@@ -18,7 +18,7 @@ export default function Staff({ data }) {
     return (
         <>
             <header className={css.header}>
-                <meta http-equiv="refresh" content='10;url=./main_Staff'></meta>
+                <meta http-equiv="refresh" content='10;url=./staff_OrderManeger'></meta>
                 <h1>注文一覧画面</h1>
                 <Link href={{ pathname: '/staff/main_Staff' }}><button className={css.staff_menubar}>メインに戻る</button></Link>
             </header>

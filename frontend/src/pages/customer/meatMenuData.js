@@ -51,6 +51,7 @@ export default function Main({ data }) {
 export async function getServerSideProps() {
     let res = await fetch(process.env.URL + '/api/getMeatData');
     let data = await res.json();
+        
     return {
         props: {
             data,
